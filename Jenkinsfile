@@ -3,7 +3,8 @@ agent any
 stages {
 stage('Checkout') {
 steps {
-git 'https://github.com/kongarashiva/react-app.git'
+git branch: 'main',
+url: 'https://github.com/kongarashiva/react-app.git'
 }
 }
 stage('Build Docker Image') {
