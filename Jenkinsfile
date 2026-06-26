@@ -33,6 +33,22 @@ docker push $ECR_REPO:latest
 '''
 }
 }
+stage('Deploy') {
+steps {
+sh '''
+ssh ec2-user@18.60.56.240  "
+aws ecr get-login-password --region ap-south-2 | \
+docker login --username AWS \
+--password-stdin 100984277793.dkr.ecr.ap-south-2.amazonaws.com
+docker pull 100984277793.dkr.ecr.ap-south-2.amazonaws.com/react-app:latest
+docker stop react-app || true
+docker rm react-app || true
+docker run -d --name react-app -p 80:80 \
+100984277793.dkr.ecr.ap-south-2.amazonaws.com/react-app:latest
+"
+'''
+}
+}
 }
 }
  
