@@ -1,88 +1,66 @@
 import React, { useState } from "react";
  
 function App() {
-  const [isLogin, setIsLogin] = useState(true);
+  const products = [
+    { id: 1, name: "Laptop", price: "₹50,000" },
+    { id: 2, name: "Mobile", price: "₹25,000" },
+    { id: 3, name: "Headphones", price: "₹3,000" },
+    { id: 4, name: "Smart Watch", price: "₹5,000" }
+  ];
+ 
+  const [cart, setCart] = useState(0);
  
   return (
-    <div style={{
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      height: "100vh",
-      background: "#f4f4f4"
-    }}>
-      <div style={{
-        width: "350px",
-        padding: "30px",
-        background: "#fff",
-        borderRadius: "10px",
-        boxShadow: "0px 0px 10px rgba(0,0,0,0.2)"
+    <div>
+      <header style={{
+        background: "#222",
+        color: "white",
+        padding: "15px",
+        display: "flex",
+        justifyContent: "space-between"
       }}>
-        <h2 style={{ textAlign: "center" }}>
-          {isLogin ? "Login" : "Register"}
-        </h2>
+        <h2>Shiva Store</h2>
+        <h3>Cart: {cart}</h3>
+      </header>
  
-        {!isLogin && (
-          <input
-            type="text"
-            placeholder="Full Name"
-            style={inputStyle}
-          />
-        )}
- 
-        <input
-          type="email"
-          placeholder="Email"
-          style={inputStyle}
-        />
- 
-        <input
-          type="password"
-          placeholder="Password"
-          style={inputStyle}
-        />
- 
-        <button style={buttonStyle}>
-          {isLogin ? "Login" : "Register"}
-        </button>
- 
-        <p style={{ textAlign: "center", marginTop: "15px" }}>
-          {isLogin
-            ? "Don't have an account?"
-            : "Already have an account?"}
-          <span
-            onClick={() => setIsLogin(!isLogin)}
+      <div style={{
+        display: "grid",
+        gridTemplateColumns: "repeat(auto-fit,minmax(250px,1fr))",
+        gap: "20px",
+        padding: "20px"
+      }}>
+        {products.map((item) => (
+          <div
+            key={item.id}
             style={{
-              color: "blue",
-              cursor: "pointer",
-              marginLeft: "5px"
+              border: "1px solid #ddd",
+              padding: "20px",
+              borderRadius: "10px",
+              textAlign: "center"
             }}
           >
-            {isLogin ? "Register" : "Login"}
-          </span>
-        </p>
+            <h3>{item.name}</h3>
+            <p>{item.price}</p>
+ 
+            <button
+              onClick={() => setCart(cart + 1)}
+              style={{
+                padding: "10px",
+                border: "none",
+                background: "blue",
+                color: "white",
+                borderRadius: "5px"
+              }}
+            >
+              Add To Cart
+            </button>
+          </div>
+        ))}
       </div>
     </div>
   );
 }
  
-const inputStyle = {
-  width: "100%",
-  padding: "10px",
-  margin: "10px 0",
-  border: "1px solid #ccc",
-  borderRadius: "5px"
-};
- 
-const buttonStyle = {
-  width: "100%",
-  padding: "10px",
-  background: "#007bff",
-  color: "white",
-  border: "none",
-  borderRadius: "5px",
-  cursor: "pointer"
-};
- 
 export default App;
+ 
  
