@@ -2,7 +2,7 @@ import React, { useState } from "react";
  
 function App() {
   const products = [
-    { id: 1, name: "Laptop", price: "₹50,000" },
+    { id: 1, name: "Apple", price: "₹50,000" },
     { id: 2, name: "Mobile", price: "₹25,000" },
     { id: 3, name: "Headphones", price: "₹3,000" },
     { id: 4, name: "Smart Watch", price: "₹5,000" }
