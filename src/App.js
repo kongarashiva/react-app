@@ -19,7 +19,7 @@ function App() {
         display: "flex",
         justifyContent: "space-between"
       }}>
-        <h2>Shiva Store</h2>
+        <h2>Ragu Store</h2>
         <h3>Cart: {cart}</h3>
       </header>
  
